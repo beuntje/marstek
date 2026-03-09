@@ -1,0 +1,14 @@
+{
+  "udp": {
+    "ip": "192.168.25.62",
+    "port": 30000
+  },
+  "mqtt": {
+    "broker": "localhost",
+    "port": 1883,
+    "user": "mqtt",
+    "pass": "mqtt",
+    "prefix": "marstek/"
+  },
+  "polling_interval": 5
+}
