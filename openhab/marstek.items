@@ -1,0 +1,27 @@
+// P1-meter:
+Number:Power  active_power  "active_power [%.1f W]" {channel="http:url:p1meter:active_power" }
+
+// Marstek:
+Number Marstek_Bat_SOC                 "Battery SOC [%d %%]"                { channel="mqtt:topic:marstek_battery:bat_soc" }
+Number Marstek_Bat_Cap                 "Battery Capacity [%.0f Wh]"        { channel="mqtt:topic:marstek_battery:bat_cap" }
+Number Marstek_PV_Power                "PV Power [%.0f W]"                 { channel="mqtt:topic:marstek_battery:pv_power" }
+Number Marstek_Grid_Power              "Grid Output Power [%.0f W]"        { channel="mqtt:topic:marstek_battery:ongrid_power" }
+Number Marstek_Bat_Power               "Battery Power [%.0f W]"            { channel="mqtt:topic:marstek_battery:offgrid_power" }
+Number Marstek_Total_PV_Energy         "Total PV Energy [%.0f Wh]"         { channel="mqtt:topic:marstek_battery:total_pv_energy" }
+Number Marstek_Total_Grid_Output       "Total Grid Output Energy [%.0f Wh]" { channel="mqtt:topic:marstek_battery:total_grid_output_energy" }
+Number Marstek_Total_Grid_Input        "Total Grid Input Energy [%.0f Wh]"  { channel="mqtt:topic:marstek_battery:total_grid_input_energy" }
+Number Marstek_Total_Load_Energy       "Total Load Energy [%.0f Wh]"       { channel="mqtt:topic:marstek_battery:total_load_energy" }
+
+// Marstek Battery Control Variables
+Number Marstek_Backup_Capacity "Backup Capacity [%d %%]" <battery> {channel=""}
+Number Marstek_Power_Threshold "Power Threshold [%d W]" <energy> {channel=""}
+
+// Battery Status (read from system)
+Number Marstek_Battery_SOC "Battery SOC [%d %%]" <battery> {channel=""}
+Number Marstek_Battery_Power "Battery Power [%d W]" <energy> {channel=""}
+Number Marstek_Load_Power "Load Power [%d W]" <energy> {channel=""}
+Number Marstek_Grid_Power "Grid Power [%d W]" <energy> {channel=""}
+Number Marstek_PV_Power "PV Power [%d W]" <energy> {channel=""}
+
+// Operating Mode
+String Marstek_Mode "Operating Mode [%s]" <settings> {channel=""}

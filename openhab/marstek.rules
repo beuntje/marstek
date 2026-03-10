@@ -1,0 +1,21 @@
+rule "Marstek Auto Mode Control"
+when
+    Item Marstek_Bat_SOC changed or
+    Item active_power changed or
+    Item Marstek_Grid_Power changed
+then
+    val soc = Marstek_Bat_SOC.state as Number
+    val activePower = active_power.state as Number
+    val dischargePower = Marstek_Grid_Power.state as Number
+    val backupCapacity = Marstek_Backup_Capacity.state as Number
+    val powerThreshold = Marstek_Power_Threshold.state as Number
+    
+    if (soc > backupCapacity || activePower < 0) {
+        logInfo("marstek", "Setting mode to Auto (SOC: {}%, Active Power: {}W)", soc, activePower)
+        executeCommandLine(Duration.ofSeconds(5), "/usr/bin/python3", "/home/bbeun/webserver/marstek/set_mode.py", "auto")
+    } else if (soc < backupCapacity && (activePower + dischargePower) > powerThreshold) {
+        val newDischargePower = activePower + dischargePower - powerThreshold
+        logInfo("marstek", "Setting Passive mode: discharge at {}W (SOC: {}%, Load: {}W)", newDischargePower, soc, activePower)
+        executeCommandLine(Duration.ofSeconds(5), "/usr/bin/python3", "/home/bbeun/webserver/marstek/set_mode.py", "passive", newDischargePower.toString, "3600")
+    }
+end
