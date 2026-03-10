@@ -21,13 +21,6 @@ def show_status():
         print(f"Total Grid Output: {es.get('total_grid_output_energy')} Wh")
         print(f"Total Grid Input: {es.get('total_grid_input_energy')} Wh")
         print(f"Total Load Energy: {es.get('total_load_energy')} Wh")
-        
-        print("\n=== CURRENT MODE ===")
-        mode = client.es_get_mode()
-        print(f"Mode: {mode.get('mode')}")
-        print(f"Grid Power: {mode.get('ongrid_power')} W")
-        print(f"Off-grid Power: {mode.get('offgrid_power')} W")
-        print(f"SOC: {mode.get('bat_soc')}%")
     except Exception as e:
         print(f"Error getting status: {e}")
 

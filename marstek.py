@@ -54,7 +54,7 @@ class MarstekClient:
             "id": device_id,
             "config": {"mode": "Auto", "auto_cfg": {"enable": 1}}
         })
-        return result.get("result", {}).get("set_result", False)
+        return result.get("set_result", False)
 
     def es_set_mode_ai(self, device_id: int = 0) -> bool:
         """Set AI mode."""
@@ -62,7 +62,7 @@ class MarstekClient:
             "id": device_id,
             "config": {"mode": "AI", "ai_cfg": {"enable": 1}}
         })
-        return result.get("result", {}).get("set_result", False)
+        return result.get("set_result", False)
 
     def es_set_mode_manual(self, device_id: int = 0, time_num: int = 0, 
                           start_time: str = "08:00", end_time: str = "20:00",
@@ -82,7 +82,7 @@ class MarstekClient:
                 }
             }
         })
-        return result.get("result", {}).get("set_result", False)
+        return result.get("set_result", False)
 
     def es_set_mode_passive(self, device_id: int = 0, power: int = 100, cd_time: int = 300) -> bool:
         """Set Passive mode with power and countdown."""
@@ -93,7 +93,7 @@ class MarstekClient:
                 "passive_cfg": {"power": power, "cd_time": cd_time}
             }
         })
-        return result.get("result", {}).get("set_result", False)
+        return result.get("set_result", False)
 
     # Energy Meter
     def em_get_status(self, device_id: int = 0) -> Dict[str, Any]:
