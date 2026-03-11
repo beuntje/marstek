@@ -63,6 +63,7 @@ class MarstekClient:
             "id": device_id,
             "config": {"mode": "AI", "ai_cfg": {"enable": 1}}
         })
+        print(f"DEBUG: Server response: {result}")
         return result.get("set_result", False)
 
     def es_set_mode_manual(self, device_id: int = 0, time_num: int = 0, 
@@ -83,6 +84,7 @@ class MarstekClient:
                 }
             }
         })
+        print(f"DEBUG: Server response: {result}")
         return result.get("set_result", False)
 
     def es_set_mode_passive(self, device_id: int = 0, power: int = 100, cd_time: int = 300) -> bool:
