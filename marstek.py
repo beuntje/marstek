@@ -54,6 +54,7 @@ class MarstekClient:
             "id": device_id,
             "config": {"mode": "Auto", "auto_cfg": {"enable": 1}}
         })
+        print(f"DEBUG: Server response: {result}")
         return result.get("set_result", False)
 
     def es_set_mode_ai(self, device_id: int = 0) -> bool:
@@ -96,6 +97,7 @@ class MarstekClient:
                     "passive_cfg": {"power": power, "cd_time": cd_time}
                 }
             })
+            print(f"DEBUG: Server response: {result}")
             return result.get("set_result", False)
         finally:
             self.sock.settimeout(old_timeout)
