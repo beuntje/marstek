@@ -86,19 +86,14 @@ class MarstekClient:
 
     def es_set_mode_passive(self, device_id: int = 0, power: int = 100, cd_time: int = 300) -> bool:
         """Set Passive mode with power and countdown."""
-        old_timeout = self.sock.gettimeout()
-        self.sock.settimeout(10.0)
-        try:
-            result = self._send_request("ES.SetMode", {
-                "id": device_id,
-                "config": {
-                    "mode": "Passive",
-                    "passive_cfg": {"power": power, "cd_time": cd_time}
-                }
-            })
-            return result.get("result", {}).get("set_result", False)
-        finally:
-            self.sock.settimeout(old_timeout)
+        result = self._send_request("ES.SetMode", {
+            "id": device_id,
+            "config": {
+                "mode": "Passive",
+                "passive_cfg": {"power": power, "cd_time": cd_time}
+            }
+        })
+        return result.get("result", {}).get("set_result", False)
 
     # Energy Meter
     def em_get_status(self, device_id: int = 0) -> Dict[str, Any]:
