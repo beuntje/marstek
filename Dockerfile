@@ -3,5 +3,6 @@
  COPY requirements.txt .
  RUN pip install --no-cache-dir -r requirements.txt
  COPY marstek.py .
- CMD ["python", "-u", "marstek.py"]
+# CMD ["python", "-u", "marstek.py"]
+ CMD ["sleep", "infinity"]
 
