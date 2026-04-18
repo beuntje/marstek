@@ -9,7 +9,7 @@ with open("config.json") as f:
     config = json.load(f)
 
 # MQTT setup
-mqtt_client = mqtt.Client("MarstekPublisher")
+mqtt_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, "MarstekPublisher")
 mqtt_client.username_pw_set(config["mqtt"]["user"], config["mqtt"]["pass"])
 mqtt_client.connect(config["mqtt"]["broker"], config["mqtt"]["port"], 60)
 mqtt_client.loop_start()
