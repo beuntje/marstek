@@ -1,5 +1,5 @@
 {
-  "udp": {
+  "marstek": {
     "ip": "192.168.0.100",
     "port": 30000
   },
@@ -10,5 +10,8 @@
     "pass": "mqtt",
     "prefix": "marstek/"
   },
-  "polling_interval": 5
+  "polling_interval": 5,
+  "homewizard": {
+    "ip": "192.168.0.101"
+  }
 }

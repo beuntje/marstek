@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 import json
 from utils.marstek import MarstekClient
+from utils.config import Config
 
-with open("config.json") as f:
-    config = json.load(f)
 
-client = MarstekClient(config["udp"]["ip"], config["udp"]["port"])
+client = MarstekClient(Config.get("marstek.ip"), Config.get("marstek.port"))
 
 def show_status():
     try:
