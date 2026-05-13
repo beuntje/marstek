@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json
-from marstek import MarstekClient
+from utils.marstek import MarstekClient
 
 with open("config.json") as f:
     config = json.load(f)

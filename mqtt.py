@@ -2,7 +2,7 @@
 import json
 import time
 import paho.mqtt.client as mqtt
-from marstek import MarstekClient
+from utils.marstek import MarstekClient
 
 # Load config
 with open("config.json") as f:
