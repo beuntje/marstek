@@ -24,7 +24,24 @@ def publish_all_keys():
     except Exception as e:
         print("Fout bij ophalen/pushen:", e, flush=True)
 
+def publish_keys(keys):
+    try:
+        result = marstek.es_get_status()
+
+        for key in keys:
+            if key in result:
+                value = result[key]
+                topic = f"{Config.get('mqtt.prefix')}{key}"
+
+                mqtt_client.publish(topic, value)
+                print(f"{key} = {value} → gepusht naar {topic}", flush=True)
+            else:
+                print(f"{key} niet gevonden in result", flush=True)
+
+    except Exception as e:
+        print("Fout bij ophalen/pushen:", e, flush=True)
 
 while True:
-    publish_all_keys()
+    #publish_all_keys()
+    publish_keys(["ongrid_power", "bat_soc"])
     time.sleep(Config.get("marstek.polling_interval"))
