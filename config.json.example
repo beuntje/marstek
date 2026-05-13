@@ -13,5 +13,8 @@
   "polling_interval": 5,
   "homewizard": {
     "ip": "192.168.0.101"
+  },
+  "openhab": {
+    "url": "http://192.168.0.102:8080"
   }
 }
